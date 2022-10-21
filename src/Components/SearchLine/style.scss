@@ -1,0 +1,45 @@
+@import "../../variables.scss";
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-bottom: 40px;
+    &__city-name{
+        padding-left:15px;
+        font-size:1.5rem;
+        @media screen and (max-width:992px) {
+            font-size:1.3rem
+        }
+        @media screen and (max-width:767px) {
+            font-size: 1.1rem;
+        }
+    }
+    &__search-box{
+        position: relative;
+        svg{
+            position: absolute;
+            top:50%;
+            left:20px;
+            transform: translate(-50%,-50%);
+            width:15px;
+            height: 15px;
+            fill:$white-color;
+            cursor: pointer;
+        }
+        input{
+            border:1px solid $white-color;
+            border-radius: 30px;
+            background-color: $main-black;
+            color:$white-color;
+            padding:13px 40px;
+            &::placeholder{
+                color:$gray
+            }
+            outline: none;
+            @media screen and (max-width:767px) {
+                font-size:.7rem;
+            }
+        }
+    }
+}

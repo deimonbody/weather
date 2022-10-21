@@ -1,0 +1,27 @@
+@mixin createFont($name,$weight,$url){
+    @font-face {
+        font-family: $name;
+        font-style: normal;
+        font-weight: $weight;
+        src: url('./font/#{$url}');
+    }
+}
+@each $name, $url in $fonts-reg {
+    @include createFont($name,400,$url);
+    .ff-#{$name}{
+        font-family: $name;
+    }
+}
+@each $name, $url in $fonts-bold {
+    @include createFont($name,800,$url);
+    .ff-#{$name}{
+        font-family: $name;
+    }
+}
+@each $name, $url in $fonts-medium {
+    @include createFont($name,500,$url);
+    .ff-#{$name}{
+        font-family: $name;
+    }
+}
+
