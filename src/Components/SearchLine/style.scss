@@ -1,6 +1,5 @@
 @import "../../variables.scss";
-
-.container{
+.container-search-line{
     display:flex;
     justify-content: space-between;
     align-items: center; 
@@ -24,17 +23,17 @@
             transform: translate(-50%,-50%);
             width:15px;
             height: 15px;
-            fill:$white-color;
+            fill:$main-black-color;
             cursor: pointer;
+            z-index: 10;
         }
         input{
-            border:1px solid $white-color;
+            border:1px solid $main-black-color;
             border-radius: 30px;
-            background-color: $main-black;
-            color:$white-color;
+            color:$main-black-color;
             padding:13px 40px;
             &::placeholder{
-                color:$gray
+                color:$main-black-color;
             }
             outline: none;
             @media screen and (max-width:767px) {
@@ -42,4 +41,50 @@
             }
         }
     }
+}
+.help-list{
+    max-height:135px;
+    overflow-y: scroll;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: $main-white-color;
+    color:$main-black-color;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid $main-black-color;
+    width:88%;
+    left:14px;
+    &__item{
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        &:not(:last-child){
+            border-bottom: 1px solid $main-black-color;
+        }
+        &:last-child{
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        &:first-child{
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        &:hover{
+            background-color: rgb(216, 212, 212);
+        }
+        &_not-found{
+            cursor: auto;
+            &:hover{
+                background-color: $main-white-color;
+            }
+        }
+        font-size: 1rem;
+        padding:15px 10px;
+    }
+    z-index: 1000;
+}
+.input-block{
+    position: relative;
 }
