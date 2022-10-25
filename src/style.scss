@@ -1,14 +1,97 @@
 @import './variables.scss';
 @import './fonts.scss';
-
 *{
     margin:0;
     padding:0;
 }
-
-body{
-    background-color: $main-black;
+::-webkit-scrollbar{
+    background-color: $main-white-color;
+    border-radius: 9em;
+    width:5px;
+    height:5px;
 }
-.text-white{
-    color:$white-color;
+
+::-webkit-scrollbar-thumb {
+    background-color: $main-black-color;
+    border-radius: 9em;
+    width:5px;
+    height:5px;
+}
+.text-color{
+    color: $main-black-color;
+}
+.block-color{
+    background-color: $block-color;
+}
+.main-color{
+    background-color: $main-white-color;
+}
+.main-container[data-theme="dark"]{
+    .text-color{
+        color:$main-white-color;
+    }
+    .main-color{
+        background-color:$main-black-color ;
+    }
+    .block-color{
+        border: 1px solid #383838;
+    }
+    .change-theme{
+        background-color: $main-black-color;
+        border:1px solid $main-white-color;
+        &__circle{
+            background-color: $main-white-color;
+            left:35px;
+        }
+    }
+    .container-search-line{
+        &__search-box{
+            svg{
+                fill:$main-white-color;
+            }
+            input{
+                border:1px solid $main-white-color;
+                border-radius: 30px;
+                color:$main-white-color;
+                background-color: $main-black-color;
+                &::placeholder{
+                    color:#C0C0C0;
+                }
+            }
+        }
+    }
+    .weather-container{
+        &__table{
+            &-border{
+                &::after{
+                    background-color: $main-white-color;
+                }  
+            }
+        }
+    }
+    .help-list{
+        background-color: $main-black-color;
+        color:$main-white-color;
+        border: 1px solid $main-white-color;
+        &__item{
+            &:not(:last-child){
+                border-bottom: 1px solid white;
+            }
+            &:hover{
+                background-color: #0f065e;
+            }
+            &_not-found{
+                &:hover{
+                    background-color: $main-black-color;
+                }
+            }
+        }
+    }
+    ::-webkit-scrollbar{
+        background-color: $main-black-color;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: $main-white-color;
+       
+    }
 }

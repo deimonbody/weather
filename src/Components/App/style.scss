@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .App{
     position: absolute;
     top:50%;
@@ -5,4 +7,26 @@
     transform: translate(-50%,-50%);
     width:90%;
     max-width: 1100px;
+}
+.change-theme{
+    position: absolute;
+    height:29px;
+    width:60px;
+    top:103px;
+    right:30px;
+    border-radius: 30px;
+    background-color: $main-white-color;
+    border:1px solid $main-black-color;
+    cursor: pointer;
+    &__circle{
+        position: absolute;
+        background-color: $main-black-color;
+        top:5px;
+        left:5px;
+        width:20px;
+        border-radius: 50%;
+        height: 70%;
+        transition: left .3s ease-in-out;
+    }
+   
 }
