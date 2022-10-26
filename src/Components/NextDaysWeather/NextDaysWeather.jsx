@@ -6,10 +6,10 @@ import "./style.scss";
 
 export const NextDaysWeather = ({ nextDaysInfo }) => {
   return (
-    <div className="container">
-      {nextDaysInfo.map((dayInfo) => {
-        return <NextDayElement key={`${uuidv4()}`} dayInfo={dayInfo} />;
-      })}
+    <div className="nd-container">
+      {nextDaysInfo.map((dayInfo) => (
+        <NextDayElement key={`${uuidv4()}`} dayInfo={dayInfo} />
+      ))}
     </div>
   );
 };

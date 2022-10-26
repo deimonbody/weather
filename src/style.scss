@@ -36,6 +36,7 @@
     .block-color{
         border: 1px solid #383838;
     }
+
     .change-theme{
         background-color: $main-black-color;
         border:1px solid $main-white-color;
@@ -44,8 +45,8 @@
             left:35px;
         }
     }
-    .container-search-line{
-        &__search-box{
+    .search-container{
+        &__inp-box{
             svg{
                 fill:$main-white-color;
             }
@@ -59,21 +60,12 @@
                 }
             }
         }
-    }
-    .weather-container{
-        &__table{
-            &-border{
-                &::after{
-                    background-color: $main-white-color;
-                }  
-            }
+        &__cities-list{
+            background-color: $main-black-color;
+            color:$main-white-color;
+            border: 1px solid $main-white-color;
         }
-    }
-    .help-list{
-        background-color: $main-black-color;
-        color:$main-white-color;
-        border: 1px solid $main-white-color;
-        &__item{
+        &__cities-item{
             &:not(:last-child){
                 border-bottom: 1px solid white;
             }
@@ -85,6 +77,13 @@
                     background-color: $main-black-color;
                 }
             }
+        }   
+    }
+    .wd-container{
+        &__border{
+            &::after{
+                background-color: $main-white-color;
+            }  
         }
     }
     ::-webkit-scrollbar{
@@ -94,4 +93,8 @@
         background-color: $main-white-color;
        
     }
+    .loading {
+        border: 3px solid rgba(255,255,255,.3);
+        border-top-color: $main-white-color;
+      }  
 }

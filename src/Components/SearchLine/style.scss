@@ -1,10 +1,10 @@
 @import "../../variables.scss";
-.container-search-line{
+.search-container{
     display:flex;
     justify-content: space-between;
     align-items: center; 
     margin-bottom: 40px;
-    &__city-name{
+    &__city{
         padding-left:15px;
         font-size:1.5rem;
         @media screen and (max-width:992px) {
@@ -14,7 +14,7 @@
             font-size: 1.1rem;
         }
     }
-    &__search-box{
+    &__inp-box{
         position: relative;
         svg{
             position: absolute;
@@ -41,31 +41,31 @@
             }
         }
     }
-}
-.help-list{
-    max-height:135px;
-    overflow-y: scroll;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    background-color: $main-white-color;
-    color:$main-black-color;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 1px solid $main-black-color;
-    width:88%;
-    left:14px;
-    &__item{
+    &__inp-block{
+        position: relative;
+    }
+    &__cities-list{
+        max-height:135px;
+        overflow-y: scroll;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: $main-white-color;
+        color:$main-black-color;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: 1px solid $main-black-color;
+        width:88%;
+        left:14px;
+        z-index: 1000;
+    }
+    &__cities-item{
         cursor: pointer;
         transition: all .3s ease-in-out;
         &:not(:last-child){
             border-bottom: 1px solid $main-black-color;
-        }
-        &:last-child{
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
         }
         &:first-child{
             border-top-left-radius: 5px;
@@ -83,8 +83,5 @@
         font-size: 1rem;
         padding:15px 10px;
     }
-    z-index: 1000;
 }
-.input-block{
-    position: relative;
-}
+

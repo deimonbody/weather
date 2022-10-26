@@ -12,6 +12,7 @@ import {
   setTempByCurrentTime,
   cashCityDay,
 } from "../../redux/store/weatherStore/actions";
+import { StorageKeys, themes } from "../../common/common";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -19,46 +20,39 @@ export const App = () => {
     useSelector((store) => store.weatherReducer);
   const [currentDayData, setCurrentDayData] = useState(null);
   const [nextDaysData, setNextDaysData] = useState(null);
-  // TODO: create a variable for possible theme values (it will be an object like for the StorageKeys - look below)
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState(themes.lightTheme);
   const changeThemeHandler = () => {
-    if (currentTheme === "light") {
-      setCurrentTheme("dark");
+    if (currentTheme === themes.lightTheme) {
+      setCurrentTheme(themes.darkTheme);
       document.body.style.backgroundColor = "#080338";
     } else {
-      setCurrentTheme("light");
+      setCurrentTheme(themes.lightTheme);
       document.body.style.backgroundColor = "#fff";
     }
   };
 
   useEffect(() => {
-    // TODO: create an object for the storage keys. It will look like:
-    // const StorageKeys = {
-    //   currentCity: 'currentCity',
-    //   ...
-    // }
-    // And you should use it everywhere to avoid mistyping
-    const currentCityFromLS = getItem("currentCity");
+    const currentCityFromLS = getItem(StorageKeys.currentCity);
     if (currentCityFromLS !== null && currentCityFromLS.length) {
       dispatch(setCurrentCity(currentCityFromLS));
     } else {
       dispatch(setCurrentCity("Vinnytsia"));
-      setItem("currentCity", "Vinnytsia");
+      setItem(StorageKeys.currentCity, "Vinnytsia");
     }
   }, []);
 
   useEffect(() => {
     if (currentCity.length) {
+      setCurrentDayData([]);
       dispatch(setCurrentCityData(currentCity));
       dispatch(setTempByCurrentTime(currentCity));
     }
   }, [currentCity]);
 
   useEffect(() => {
-    // TODO: arrow function don't need a return if it is one line
-    const cityFromCashData = allCitiesData.find((cityCashData) => {
-      return cityCashData.cityName === currentCity;
-    });
+    const cityFromCashData = allCitiesData.find(
+      (cityCashData) => cityCashData.cityName === currentCity
+    );
     if (cityFromCashData) {
       setCurrentDayData(cityFromCashData.dataOfCity.slice(0, 24));
       setNextDaysData(cityFromCashData.dataOfCity.slice(24));
@@ -74,7 +68,7 @@ export const App = () => {
   return (
     <div className="main-container" data-theme={currentTheme}>
       <div className="main-color">
-        {currentDayData && currentTemp ? (
+        {currentDayData && currentDayData.length && currentTemp ? (
           <>
             <div className="App ">
               <SearchLine />

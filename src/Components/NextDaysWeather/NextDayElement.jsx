@@ -4,18 +4,18 @@ import dayjs from "dayjs";
 
 export const NextDayElement = ({ dayInfo }) => {
   return (
-    <div className="dayInfoEl text-color block-color">
-      <p className="dayInfoEl__day ff-openSans-bold">
+    <div className="nd-container__el text-color block-color">
+      <p className="nd-container__day ff-openSans-bold">
         {dayjs(dayInfo.time).format("ddd")}
       </p>
-      <p className="dayInfoEl__date ff-openSans-reg">
+      <p className="nd-container__date ff-openSans-reg">
         {dayjs(dayInfo.time).format("D-MMMM")}
       </p>
-      <div className="dayInfoEl__img-block">
-        <div className="dayInfoEl__img-container dayInfoEl__img-block-el">
+      <div className="nd-container__box">
+        <div className="nd-container__box-left nd-container__box-el">
           <img src={`./assets/img/${dayInfo.icon}`} alt="weather-pic" />
         </div>
-        <div className="dayInfoEl__text-container dayInfoEl__img-block-el">
+        <div className="nd-container__box-right nd-container__box-el">
           <p className="ff-inter-medium first-temp">
             {`${dayInfo.max < 0 ? "-" : "+"} ${dayInfo.max}`}°
           </p>
