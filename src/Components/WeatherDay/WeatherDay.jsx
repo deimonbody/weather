@@ -11,9 +11,13 @@ import "./style.scss";
 export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
   const weatherDataByHours = createWeatherByHours(currentDayData);
   const currentWeatherImg = getCurrentWeatherImg(currentDayData, dayjs());
+  // TODO: Add useMemo for currentDay
   const currentDay = `${dayjs(currentDayData.time).format(
     "DD-MMMM-YYYY"
   )} ${dayjs().format("HH")} : ${dayjs().format("mm")}`;
+
+  // TODO: class names are very long. An element is always part of a block, not another element
+  // https://en.bem.info/methodology/quick-start/#nesting-1
 
   return (
     <>
@@ -72,6 +76,7 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                 <tr>
                   <td colSpan="2" />
                   <td />
+                  {/* TODO: rework time rendering with map */}
                   <td className="weather-container__table-time text-color">
                     2:00
                   </td>

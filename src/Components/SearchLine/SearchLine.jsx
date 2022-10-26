@@ -10,6 +10,7 @@ export const SearchLine = () => {
   const currentCity = useSelector((store) => store.weatherReducer.currentCity);
   const inputRef = useRef(null);
   const helpsRef = useRef(null);
+  // TODO: move const outside of the component
   const citites = [
     "Kiev",
     "Vinnytsia",
@@ -26,9 +27,11 @@ export const SearchLine = () => {
 
   const inputChange = (val) => {
     setVal(val);
+    // TODO: "" is a falsy value. You can change the condition to (!val)
     if (val === "") {
       setActiveCities(citites);
     } else {
+      // arrow function should be without the return :)
       const filteredCitites = citites.filter((city) => {
         return city.includes(val);
       });
@@ -48,11 +51,13 @@ export const SearchLine = () => {
   };
   const onFocusHanlder = () => {
     setIsShowHelp(true);
+    // TODO: (!inpVal)
     if (inpVal === "") {
       setActiveCities(citites);
     }
   };
 
+  // You are adding and removing event listeners on EVERY input change. It is a bad approach. Rework logic
   useEffect(() => {
     const clickHandler = (e) => {
       if (e.target !== inputRef.current && e.target !== helpsRef.current) {
@@ -100,6 +105,7 @@ export const SearchLine = () => {
                 activeCities.map((city) => {
                   return (
                     <div
+                      // TODO: The key is changing on every rerender
                       key={`${uuidv4()}`}
                       className="help-list__item ff-openSans-bold"
                       onClick={() => {

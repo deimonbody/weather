@@ -9,6 +9,7 @@ export const getWeatherInfoByCity = async (city) => {
   try {
     const fromDate = dayjs().format("YYYY-MM-DD");
     const endDate = dayjs().add(7, "day").format("YYYY-MM-DD");
+    // TODO: rework fetch with axios
     const response = await fetch(
       `https://${API_HOST_DAYS}/forecasts/${city},ukraine?from=${fromDate}&filter=1hr&to=${endDate}`,
       {

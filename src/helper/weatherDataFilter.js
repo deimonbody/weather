@@ -45,6 +45,7 @@ export const weatherDataFilter = (weatherData) => {
 export const createWeatherByHours = (weatherData) => {
   const filterData = weatherData.filter((dayInfo) => {
     const currentTime = dayjs(dayInfo.time).get("hours");
+    // TODO: [2, 4, 8, 12, ...].includes(currentTime)
     return (
       currentTime === 2 ||
       currentTime === 4 ||
