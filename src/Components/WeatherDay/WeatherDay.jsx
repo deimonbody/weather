@@ -50,7 +50,7 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                     (dayPeriod, index) => (
                       <WeatherDayPeriod
                         dayPeriod={dayPeriod}
-                        index={index}
+                        index={dayPeriod}
                         key={index}
                       />
                     )
