@@ -19,24 +19,20 @@ export const weatherDataFilter = (weatherData) => {
   let nextDays = days;
   nextDays.pop();
 
-  currentDay = currentDay.map((dayInfo) => {
-    return {
-      time: dayInfo.validTime,
-      temp: dayInfo.avgTempC,
-      feelsLike: dayInfo.feelslikeC,
-      humidity: dayInfo.humidity,
-      pressure: dayInfo.pressureMB,
-      wind: dayInfo.windSpeedKPH,
-      icon: dayInfo.icon,
-    };
-  });
-  nextDays = nextDays.map((day) => {
-    return {
-      time: dayjs(day[0].dateTimeISO),
-      icon: day[13].icon,
-      ...findMinMaxTemp(day),
-    };
-  });
+  currentDay = currentDay.map((dayInfo) => ({
+    time: dayInfo.validTime,
+    temp: dayInfo.avgTempC,
+    feelsLike: dayInfo.feelslikeC,
+    humidity: dayInfo.humidity,
+    pressure: dayInfo.pressureMB,
+    wind: dayInfo.windSpeedKPH,
+    icon: dayInfo.icon,
+  }));
+  nextDays = nextDays.map((day) => ({
+    time: dayjs(day[0].dateTimeISO),
+    icon: day[13].icon,
+    ...findMinMaxTemp(day),
+  }));
 
   days = [...currentDay, ...nextDays];
   return days;
@@ -45,17 +41,8 @@ export const weatherDataFilter = (weatherData) => {
 export const createWeatherByHours = (weatherData) => {
   const filterData = weatherData.filter((dayInfo) => {
     const currentTime = dayjs(dayInfo.time).get("hours");
+    return [2, 4, 8, 12, 14, 16, 20, 22].includes(currentTime);
     // TODO: [2, 4, 8, 12, ...].includes(currentTime)
-    return (
-      currentTime === 2 ||
-      currentTime === 4 ||
-      currentTime === 8 ||
-      currentTime === 12 ||
-      currentTime === 14 ||
-      currentTime === 16 ||
-      currentTime === 20 ||
-      currentTime === 22
-    );
   });
   const weatherByHours = [
     { beginTime: "2:00", endTime: "4:00" },
@@ -88,8 +75,9 @@ export const createWeatherByHours = (weatherData) => {
 };
 
 export const getCurrentWeatherImg = (weatherData, currentTime) => {
-  const nearistData = weatherData.find((dayInfo) => {
-    return dayjs(currentTime).get("hours") === dayjs(dayInfo.time).get("hours");
-  });
+  const nearistData = weatherData.find(
+    (dayInfo) =>
+      dayjs(currentTime).get("hours") === dayjs(dayInfo.time).get("hours")
+  );
   return nearistData.icon;
 };

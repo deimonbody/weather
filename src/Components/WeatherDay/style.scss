@@ -1,5 +1,5 @@
 @import "../../variables.scss";
-.main-part-container{
+.wd-container{
     border-radius: 30px;
     padding:15px 20px;
     &__day{
@@ -12,35 +12,34 @@
         }
         margin-bottom: 20px;
     }
-}
-
-.weather-container{
-    display: flex;
-    align-items: center;
     &__main{
+        display: flex;
+        align-items: center;
+    }
+    &__left-side{
         flex-basis: 30%;
         display: flex;
         flex-direction: column;
-        &-img{
-            display: flex;
-            img{
-                width:70%;
-                height: 100%;
-                object-fit: contain;
-            }
-        }
-        &-text{
-            font-size: 2.8rem;
-            padding-left: 20px;
-            @media screen and (max-width:992px) {
-                font-size:2.2rem;
-            }
-             @media screen and (max-width:767px) {
-                font-size:2rem;
-            }
+    }
+    &__left-img{
+        display: flex;
+        img{
+            width:70%;
+            height: 100%;
+            object-fit: contain;
         }
     }
-    &__weather-during-day{
+    &__left-text{
+        font-size: 2.8rem;
+        padding-left: 20px;
+        @media screen and (max-width:992px) {
+            font-size:2.2rem;
+        }
+         @media screen and (max-width:767px) {
+            font-size:2rem;
+        }
+    }
+    &__right-side{
         flex:70%;
         padding-left: 40px;
         @media screen and (max-width:992px) {
@@ -50,62 +49,61 @@
             padding-left:5px;
         }
     }
-    &__table{
-        width:100%;
-        &-label{
-            font-size: .9rem;
-            padding-bottom: 13px;
-            white-space: nowrap;
-            text-align: end;
+    &__day-period{
+        font-size: 1.1rem;
+        @media screen and (max-width:992px) {
+            font-size:.9rem;
         }
-        font-family: 'openSans-reg';
-        &-value{
-            font-size: .9rem;
-            font-family: 'openSans-bold';
-            text-align: center;
-            padding-bottom: 13px;
-            @media screen and (max-width:992px) {
-                font-size:.7rem;
-            }
-        }
-        &-time{
-            font-size: 1rem;
-            text-align: center;
-            padding-bottom: 13px;
-            @media screen and (max-width:992px) {
-                font-size:.8rem;
-            }
-        }
-        &-icon{
-            text-align: center;
-            width:65px;
-            height: 65px;
-            img{
-                width:100%;
-                height: 100%;
-                object-fit: contain;
-            }
-        }
-        &-day-period-name{
-            font-size: 1.1rem;
-            @media screen and (max-width:992px) {
-                font-size:.9rem;
-            }
-            text-align: center;
-            padding-bottom: 5px;
-        }
-        &-border{
-            position: relative;
-            &::after{
-                top:-30px;
-                position: absolute;
-                display: block;
-                content:"";
-                width:1px;
-                background-color: $main-black-color;
-                height: 300px;
-            }
+        text-align: center;
+        padding-bottom: 5px;
+    }
+    &__day-time{
+        font-size: 1rem;
+        text-align: center;
+        padding-bottom: 13px;
+        @media screen and (max-width:992px) {
+            font-size:.8rem;
         }
     }
+    &__border{
+        position: relative;
+        &::after{
+            top:-30px;
+            position: absolute;
+            display: block;
+            content:"";
+            width:1px;
+            background-color: $main-black-color;
+            height: 300px;
+        }
+    }
+    &__label{
+        font-size: .9rem;
+        padding-bottom: 13px;
+        white-space: nowrap;
+        text-align: end;
+    }
+    &__icon{
+        text-align: center;
+        width:65px;
+        height: 65px;
+        img{
+            width:100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    &__value{
+        font-size: .9rem;
+        font-family: 'openSans-bold';
+        text-align: center;
+        padding-bottom: 13px;
+        @media screen and (max-width:992px) {
+            font-size:.7rem;
+        }
+    }   
+    &__table{
+        width:100%;
+        font-family: 'openSans-reg';
+    }
 }
-
