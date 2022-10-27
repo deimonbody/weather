@@ -93,8 +93,10 @@
         background-color: $main-white-color;
        
     }
-    .loading {
-        border: 3px solid rgba(255,255,255,.3);
-        border-top-color: $main-white-color;
-      }  
+    .loading-wrapper{
+        &__loading{
+            border: 3px solid rgba(255,255,255,.3);
+            border-top-color: $main-white-color;
+        }
+    }
 }

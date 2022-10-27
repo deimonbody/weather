@@ -7,6 +7,9 @@
     transform: translate(-50%,-50%);
     width:90%;
     max-width: 1100px;
+    @media screen and (max-width:776px) {
+        padding-top:150px;
+    }
 }
 .change-theme{
     position: absolute;
@@ -28,5 +31,10 @@
         height: 70%;
         transition: left .3s ease-in-out;
     }
-   
+   @media screen and (max-width:776px) {
+    top:252px;
+   }
+   @media screen and (max-width:540px) {
+    top:290px;
+   }
 }
