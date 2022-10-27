@@ -4,6 +4,9 @@
     justify-content: space-between;
     align-items: center; 
     margin-bottom: 40px;
+    @media screen and (max-width:540px) {
+        flex-direction: column;
+    }
     &__city{
         padding-left:15px;
         font-size:1.5rem;
@@ -12,6 +15,10 @@
         }
         @media screen and (max-width:767px) {
             font-size: 1.1rem;
+        }
+        @media screen and (max-width:540px) {
+            padding-left:0;
+            padding-bottom: 20px;
         }
     }
     &__inp-box{
