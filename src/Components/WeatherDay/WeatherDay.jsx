@@ -1,11 +1,15 @@
 import React, { useMemo } from "react";
 import dayjs from "dayjs";
 import PropTypes from "prop-types";
-import { v4 as uuidv4 } from "uuid";
 import {
   createWeatherByHours,
   getCurrentWeatherImg,
 } from "../../helper/weatherDataFilter";
+import { WeatherDayTime } from "./WeatherDayTime";
+import { WeatherDayIcon } from "./WeatherDayIcon";
+import { WeatherDayTemp } from "./WeatherDayTemp";
+import { WeatherDayValue } from "./WeatherDayValue";
+import { WeatherDayPeriod } from "./WeatherDayPeriod";
 import "./style.scss";
 
 export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
@@ -44,12 +48,11 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                   <th> </th>
                   {["Night", "Morning", "Day", "Evening"].map(
                     (dayPeriod, index) => (
-                      <>
-                        <th colSpan="3" className="wd-container__day-period">
-                          {dayPeriod}
-                        </th>
-                        {index !== 3 ? <th> </th> : null}
-                      </>
+                      <WeatherDayPeriod
+                        dayPeriod={dayPeriod}
+                        index={index}
+                        key={index}
+                      />
                     )
                   )}
                 </tr>
@@ -64,31 +67,15 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                     ["16:00", "18:00"],
                     ["20:00", "22:00"],
                   ].map((time, index) => (
-                    <>
-                      <td className="wd-container__day-time text-color">
-                        {time[0]}
-                      </td>
-                      <td />
-                      <td className="wd-container__day-time text-color">
-                        {time[1]}
-                      </td>
-                      {index !== 3 ? (
-                        <td className="wd-container__border" />
-                      ) : null}
-                    </>
+                    <WeatherDayTime time={time} index={index} key={index} />
                   ))}
                 </tr>
                 <tr>
                   <td colSpan="2" />
                   <td />
                   {weatherDataByHours.map((el) =>
-                    el.icons.map((icon) => (
-                      <>
-                        <td className="wd-container__icon" key={`${uuidv4()}`}>
-                          <img src={`./assets/img/${icon}`} alt="weather-img" />
-                        </td>
-                        <td />
-                      </>
+                    el.icons.map((icon, index) => (
+                      <WeatherDayIcon icon={icon} key={index} />
                     ))
                   )}
                 </tr>
@@ -98,13 +85,8 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                   </td>
                   <td />
                   {weatherDataByHours.map((el) =>
-                    el.tempDuringDay.map((temp) => (
-                      <>
-                        <td className="wd-container__value" key={`${uuidv4()}`}>
-                          {`${temp < 0 ? "-" : "+"} ${temp}`}°
-                        </td>
-                        <td />
-                      </>
+                    el.tempDuringDay.map((temp, index) => (
+                      <WeatherDayTemp temp={temp} key={index} />
                     ))
                   )}
                 </tr>
@@ -114,13 +96,8 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                   </td>
                   <td />
                   {weatherDataByHours.map((el) =>
-                    el.feelsLike.map((temp) => (
-                      <>
-                        <td className="wd-container__value" key={`${uuidv4()}`}>
-                          {`${temp < 0 ? "-" : "+"} ${temp}`}°
-                        </td>
-                        <td />
-                      </>
+                    el.feelsLike.map((temp, index) => (
+                      <WeatherDayTemp temp={temp} key={index} />
                     ))
                   )}
                 </tr>
@@ -130,13 +107,8 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                   </td>
                   <td />
                   {weatherDataByHours.map((el) =>
-                    el.pressure.map((press) => (
-                      <>
-                        <td className="wd-container__value" key={`${uuidv4()}`}>
-                          {press}
-                        </td>
-                        <td />
-                      </>
+                    el.pressure.map((press, index) => (
+                      <WeatherDayValue value={`${press}`} key={index} />
                     ))
                   )}
                 </tr>
@@ -146,13 +118,8 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                   </td>
                   <td />
                   {weatherDataByHours.map((el) =>
-                    el.humidity.map((humidity) => (
-                      <>
-                        <td className="wd-container__value" key={`${uuidv4()}`}>
-                          {humidity}%
-                        </td>
-                        <td />
-                      </>
+                    el.humidity.map((humidity, index) => (
+                      <WeatherDayValue value={`${humidity}%`} key={index} />
                     ))
                   )}
                 </tr>
@@ -162,13 +129,8 @@ export const WeatherDay = ({ currentDayData, currentDayTemp }) => {
                   </td>
                   <td />
                   {weatherDataByHours.map((el) =>
-                    el.winds.map((winds) => (
-                      <>
-                        <td className="wd-container__value" key={`${uuidv4()}`}>
-                          {winds}
-                        </td>
-                        <td />
-                      </>
+                    el.winds.map((winds, index) => (
+                      <WeatherDayValue value={`${winds}`} key={index} />
                     ))
                   )}
                 </tr>

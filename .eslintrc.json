@@ -30,6 +30,7 @@
         "default-param-last":"off",
         "react/jsx-no-useless-fragment":"off",
         "react/require-default-props":"off",
-        "react/forbid-prop-types":"off"
+        "react/forbid-prop-types":"off",
+        "react/no-array-index-key":"off"
     }
 }
